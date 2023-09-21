@@ -1,4 +1,4 @@
-import { BrowserRouter, Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -11,11 +11,14 @@ import AppContext from "./utils/context";
 function App() {
   return (
     <BrowserRouter>
-      <Route>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:id" element={<Category />} />
-        <Route path="/product/:id" element={<SingleProduct />} />
-      </Route>
+      <AppContext>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:id" element={<Category />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
+        </Routes>
+      </AppContext>
     </BrowserRouter>
   );
 }
